@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('matches', ['as' => 'matches', 'uses' => 'matchesController@viewMatches']);
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('matches/{id?}', ['as' => 'matches', 'uses' => 'matchesController@show']);
+//Route::get('matches/{id?}', 'matchesController@show');
