@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('matches', ['as' => 'matches', 'uses' => 'matchesController@viewMatches']);
