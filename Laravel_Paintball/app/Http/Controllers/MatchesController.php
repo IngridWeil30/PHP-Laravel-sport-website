@@ -9,8 +9,8 @@ class matchesController extends Controller
 {
     public function addMatch(Request $request) {
 
-        $data = Matches::create($request->all());
-        var_dump($data);
+        Matches::create($request->all());
+        return redirect('admin');
 
     }
     public function create()
@@ -43,7 +43,6 @@ class matchesController extends Controller
 
     public function show($id)
     {
-
         $matches = Matches::find($id);
         //$matches = Matches::get()->where('id', $id)->first();
         return view('matches')->with('matches', $matches);

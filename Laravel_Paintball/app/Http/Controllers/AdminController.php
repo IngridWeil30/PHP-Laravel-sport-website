@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Matches;
+use App\Teams;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
 
     public function viewAdmin() {
-        $matches = Matches::get()->where('id', 1)->first();
+        $teams = Teams::pluck('name', 'id');
 
-        return view('admin')->with('matches', $matches);
+        return view('admin')->with('teams', $teams);
     }
 
 
@@ -22,8 +23,7 @@ class AdminController extends Controller
      */
     public function create(Request $request)
     {
-        Matches::create($request->all());
-        return redirect('admin');
+
     }
 
     /**
