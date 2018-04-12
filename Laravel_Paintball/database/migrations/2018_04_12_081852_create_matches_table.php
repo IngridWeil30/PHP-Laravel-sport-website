@@ -17,13 +17,12 @@ class CreateMatchesTable extends Migration
             $table->increments('id');
             $table->integer('team1');
             $table->integer('team2');
-            $table->string('placement');
             $table->integer('winner');
             $table->integer('scoreTeam1');
             $table->integer('scoreTeam2');
             $table->string('city');
             $table->string('description');
-            $table->string('matchStatus');
+            $table->integer('matchStatus');
             $table->timestamps();
         });
     }

@@ -24,6 +24,11 @@ class CreateTeamsTable extends Migration
             $table->string('weapon');
             $table->timestamps();
         });
+
+        Schema::table('matches', function (Blueprint $table) {
+            $table->integer('team1')->unsigned();
+            $table->integer('team2')->unsigned();
+        });
     }
 
     /**
