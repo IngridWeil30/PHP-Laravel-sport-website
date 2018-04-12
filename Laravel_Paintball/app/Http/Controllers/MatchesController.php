@@ -7,18 +7,12 @@ use Illuminate\Http\Request;
 
 class matchesController extends Controller
 {
-    public function viewMatches() {
-
-        return view('matches')->with('matches', $matches);
-    }
-
     public function addMatch(Request $request) {
 
         Matches::create($request->all());
         return redirect('admin');
 
     }
-
     public function create()
     {
         //
@@ -43,12 +37,12 @@ class matchesController extends Controller
      */
 
     public function displayAllMatches() {
-        //return view('table_matches', 'day' => [$day]);
+        $matches = Matches::get();
+        return view('matches')->with('matches', $matches);
     }
 
     public function show($id)
     {
-
         $matches = Matches::find($id);
         //$matches = Matches::get()->where('id', $id)->first();
         return view('matches')->with('matches', $matches);
