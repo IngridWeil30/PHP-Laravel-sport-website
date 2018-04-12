@@ -35,8 +35,45 @@
         {!! Form::select('matchStatus', [0 => 'To come', 1 => 'Done']) !!}
 
     </div>
-        <button class="btn btn-primary">Send</button>
+    <button class="btn btn-primary">Send</button>
     {!! Form::close() !!}
 
+    <br>
+
+    <h2>Add a team</h2>
+    <button type="button" class="btn btn-primary">Add team</button>
+
+    {!! Form::open(['url' => 'admin/addTeam']) !!}
+    <div class="form-group">
+        {!! Form::label('name', 'Team Name') !!}
+        {!! Form::text('name', "Team Name" ,  ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('nb_players', 'Number of players') !!}
+        {!! Form::number('nb_players', 0, ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('country_origin', 'Country origin') !!}
+        {!! Form::select('scoreTeam1') !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('coach', 'Coach name') !!}
+        {!! Form::text('name', "Coach name" ,  ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('nb_victories', 'Number of team victories') !!}
+        {!! Form::number('nb_victories', 0, ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('total_points', 'Total points of the team') !!}
+        {!! Form::number('total_points', 0, ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('weapon', 'Name of the team super-weapon') !!}
+        {!! Form::text('name', "Weapon name" ,  ['class' => 'form-control']) !!}
+
+    </div>
+    <button class="btn btn-primary">Send</button>
+    {!! Form::close() !!}
 
 @endsection
