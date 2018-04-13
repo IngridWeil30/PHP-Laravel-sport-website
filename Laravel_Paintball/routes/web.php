@@ -18,6 +18,7 @@ Route::get('/', function () {
 //Route::get('matches', ['as' => 'matches', 'uses' => 'MatchesController@viewMatches']);
 Route::get('admin', ['as' => 'admin', 'uses' => 'AdminController@viewAdmin']);
 Route::post('admin/addMatch', ['as' => 'addMatch', 'uses' => 'MatchesController@addMatch']);
+Route::post('admin/findMatch', ['as' => 'findMatch', 'uses' => 'MatchesController@findMatch']);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('matches/{id}', ['as' => 'matches', 'uses' => 'MatchesController@show']);
 Route::get('matches', ['as' => 'matches', 'uses' => 'MatchesController@displayAllMatches']);
