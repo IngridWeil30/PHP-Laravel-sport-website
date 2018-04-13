@@ -1,12 +1,17 @@
 @extends('default')
 @section('content')
 
+    @if(isset($message))
+        <div class="alert alert-warning">
+        {!! $message !!}
+        </div>
+    @endif
 
-    <h2>Add an upcoming match</h2>
     <button type="button" id="addMatch" class="btn btn-primary">Add match</button><br>
 
-    {!! Form::open(['url' => 'admin/addMatch', 'id' =>'form1']) !!}
-    <br><div class="form-group">
+    {!! Form::open(['url' => 'admin/addMatch', 'id' =>'formAddMatch']) !!}
+    <br><h2>Add an upcoming match</h2>
+    <div class="form-group">
         {!! Form::label('team1', 'Team 1') !!}
         {!! Form::select('team1', $teams) !!}
     </div>
@@ -16,7 +21,7 @@
     </div>
     <div class="form-group">
         {!! Form::label('scoreTeam1', 'Score team 1') !!}
-        {!! Form::number('scoreTeam1', 0, ['class' => 'form-control']) !!}
+        {!! Form::number('scoreTeam1', 0, ['class' => 'form-control', 'required' => 'required']) !!}
     </div>
     <div class="form-group">
         {!! Form::label('scoreTeam2', 'Score team 2') !!}
@@ -24,7 +29,7 @@
     </div>
     <div class="form-group">
         {!! Form::label('city', 'City') !!}
-        {!! Form::text('city', "City" ,  ['class' => 'form-control']) !!}
+        {!! Form::text('city', "City" ,  ['class' => 'form-control', 'required' => 'required']) !!}
     </div>
     <div class="form-group">
         {!! Form::label('description', 'Description') !!}
@@ -43,18 +48,31 @@
         <button class="btn btn-primary">Send</button>
     {!! Form::close() !!}
 
-    <script>$("#form1").hide();
-        $('#addMatch').on('click', function() {
-            $('#form1').toggle();
-        });</script>
+    <br>
 
+    <button type="button" id="findMatch" class="btn btn-primary">Find match and manage</button>
+
+    {!! Form::open(['url' => 'admin/findMatch', 'id' =>'formFindMatch']) !!}
+    <br><h2>Find a match</h2>
+    <div class="form-group">
+        {!! Form::label('team1', 'Team 1') !!}
+        {!! Form::select('team1', $teams) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('team2', 'Team 2') !!}
+        {!! Form::select('team2', $teams) !!}
+    </div>
+    <button class="btn btn-primary">Find</button>
+
+    {!! Form::close() !!}
 
     <br>
 
-    <h2>Add a team</h2>
-    <button type="button" id="addTeam" class="btn btn-primary">Add team</button>
+    <br><button type="button" id="addTeam" class="btn btn-primary">Add team</button>
 
-    {!! Form::open(['url' => 'admin/addTeam', 'id' =>'form2']) !!}
+
+    {!! Form::open(['url' => 'admin/addTeam', 'id' => 'formAddTeam']) !!}
+    <br><h2>Add a team</h2>
     <div class="form-group">
         {!! Form::label('name', 'Team Name') !!}
         {!! Form::text('name', "Team Name" ,  ['class' => 'form-control']) !!}
@@ -89,6 +107,19 @@
     <script>$("#form2").hide();
         $('#addTeam').on('click', function() {
             $('#form2').toggle();
+        });</script>
+
+    <script>$("#formAddMatch").hide();
+        $('#addMatch').on('click', function() {
+            $('#formAddMatch').toggle();
+        });
+        $("#formFindMatch").hide();
+        $('#findMatch').on('click', function() {
+            $('#formFindMatch').toggle();
+        });
+        $("#formAddTeam").hide();
+        $('#addTeam').on('click', function() {
+            $('#formAddTeam').toggle();
         });</script>
 
 @endsection
