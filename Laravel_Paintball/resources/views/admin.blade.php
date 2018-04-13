@@ -1,8 +1,5 @@
 @extends('default')
-
-
 @section('content')
-
 
     @if(isset($message))
         <div class="alert alert-warning">
@@ -51,7 +48,6 @@
         <button class="btn btn-primary">Send</button>
     {!! Form::close() !!}
 
-
     <br>
 
     <button type="button" id="findMatch" class="btn btn-primary">Find match and manage</button>
@@ -72,7 +68,6 @@
 
     <br>
 
-
     <br><button type="button" id="addTeam" class="btn btn-primary">Add team</button>
 
 
@@ -88,11 +83,11 @@
     </div>
     <div class="form-group">
         {!! Form::label('country_origin', 'Country origin') !!}
-        {!! Form::select('scoreTeam1') !!}
+        {!! Form::select('country_origin', $country_origin) !!}
     </div>
     <div class="form-group">
         {!! Form::label('coach', 'Coach name') !!}
-        {!! Form::text('name', "Coach name" ,  ['class' => 'form-control']) !!}
+        {!! Form::text('coach', "coach" ,  ['class' => 'form-control']) !!}
     </div>
     <div class="form-group">
         {!! Form::label('nb_victories', 'Number of team victories') !!}
@@ -104,11 +99,15 @@
     </div>
     <div class="form-group">
         {!! Form::label('weapon', 'Name of the team super-weapon') !!}
-        {!! Form::text('name', "Weapon name" ,  ['class' => 'form-control']) !!}
+        {!! Form::text('weapon', "Weapon name" ,  ['class' => 'form-control']) !!}
 
     </div>
     <button class="btn btn-primary">Send</button>
     {!! Form::close() !!}
+    <script>$("#form2").hide();
+        $('#addTeam').on('click', function() {
+            $('#form2').toggle();
+        });</script>
 
     <script>$("#formAddMatch").hide();
         $('#addMatch').on('click', function() {
