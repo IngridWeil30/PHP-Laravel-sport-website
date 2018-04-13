@@ -2,28 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Matches;
 use App\Teams;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class TeamsController extends Controller
 {
+    public function addTeam(Request $request) {
 
-    public function viewAdmin() {
-        $teams = Teams::pluck('name', 'id');
-        $teams_country = Teams::pluck('country_origin');
-        return view('admin')->with('teams', $teams)->with('country_origin', $teams_country);
+        Teams::create($request->all());
+        return redirect('admin');
+
     }
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request)
+    public function create()
     {
-
+        //
     }
 
     /**

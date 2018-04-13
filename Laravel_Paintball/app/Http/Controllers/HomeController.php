@@ -11,8 +11,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index(Request $request)
     {
+/* PERMET D'AFFICHER EN FONCTION DE LA LANGUE CHOISIR EN URL (EN ou FR)
+ *         if($request->lang <> ''){
+            app()->setLocale($request->lang);
+        }*/
         return view('home');
     }
 

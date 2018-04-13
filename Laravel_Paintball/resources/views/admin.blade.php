@@ -1,13 +1,11 @@
 @extends('default')
-
-
 @section('content')
 
 
     <h2>Add an upcoming match</h2>
-    <button type="button" id="go" class="btn btn-primary">Add match</button><br>
+    <button type="button" id="addMatch" class="btn btn-primary">Add match</button><br>
 
-    {!! Form::open(['url' => 'admin/addMatch', 'id' =>'form']) !!}
+    {!! Form::open(['url' => 'admin/addMatch', 'id' =>'form1']) !!}
     <br><div class="form-group">
         {!! Form::label('team1', 'Team 1') !!}
         {!! Form::select('team1', $teams) !!}
@@ -45,18 +43,18 @@
         <button class="btn btn-primary">Send</button>
     {!! Form::close() !!}
 
-    <script>$("#form").hide();
-        $('#go').on('click', function() {
-            $('#form').toggle();
+    <script>$("#form1").hide();
+        $('#addMatch').on('click', function() {
+            $('#form1').toggle();
         });</script>
 
 
     <br>
 
     <h2>Add a team</h2>
-    <button type="button" class="btn btn-primary">Add team</button>
+    <button type="button" id="addTeam" class="btn btn-primary">Add team</button>
 
-    {!! Form::open(['url' => 'admin/addTeam']) !!}
+    {!! Form::open(['url' => 'admin/addTeam', 'id' =>'form2']) !!}
     <div class="form-group">
         {!! Form::label('name', 'Team Name') !!}
         {!! Form::text('name', "Team Name" ,  ['class' => 'form-control']) !!}
@@ -67,11 +65,11 @@
     </div>
     <div class="form-group">
         {!! Form::label('country_origin', 'Country origin') !!}
-        {!! Form::select('scoreTeam1') !!}
+        {!! Form::select('country_origin', $country_origin) !!}
     </div>
     <div class="form-group">
         {!! Form::label('coach', 'Coach name') !!}
-        {!! Form::text('name', "Coach name" ,  ['class' => 'form-control']) !!}
+        {!! Form::text('coach', "coach" ,  ['class' => 'form-control']) !!}
     </div>
     <div class="form-group">
         {!! Form::label('nb_victories', 'Number of team victories') !!}
@@ -83,10 +81,14 @@
     </div>
     <div class="form-group">
         {!! Form::label('weapon', 'Name of the team super-weapon') !!}
-        {!! Form::text('name', "Weapon name" ,  ['class' => 'form-control']) !!}
+        {!! Form::text('weapon', "Weapon name" ,  ['class' => 'form-control']) !!}
 
     </div>
     <button class="btn btn-primary">Send</button>
     {!! Form::close() !!}
+    <script>$("#form2").hide();
+        $('#addTeam').on('click', function() {
+            $('#form2').toggle();
+        });</script>
 
 @endsection
