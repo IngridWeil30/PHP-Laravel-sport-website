@@ -83,7 +83,8 @@
     </div>
     <div class="form-group">
         {!! Form::label('country_origin', 'Country origin') !!}
-        {!! Form::text('country_origin', 'Country') !!}
+        {!! Form::text('country_origin', "Country origin", ['class' => 'form-control']) !!}
+
     </div>
     <div class="form-group">
         {!! Form::label('coach', 'Coach name') !!}
