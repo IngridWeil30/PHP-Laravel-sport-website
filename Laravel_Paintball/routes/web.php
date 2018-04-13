@@ -16,12 +16,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 //Route::get('matches', ['as' => 'matches', 'uses' => 'MatchesController@viewMatches']);
 Route::get('admin', ['as' => 'admin', 'uses' => 'AdminController@viewAdmin']);
 Route::post('admin/addMatch', ['as' => 'addMatch', 'uses' => 'MatchesController@addMatch']);
+Route::post('admin/editMatch/{data?}', ['as' => 'editMatch', 'uses' => 'MatchesController@editMatch']);
 Route::post('admin/addTeam', ['as' => 'addTeam', 'uses' => 'TeamsController@addTeam']);
 Route::post('admin/findMatch', ['as' => 'findMatch', 'uses' => 'MatchesController@findMatch']);
-Route::post('admin/checkCountry', ['as' => 'checkCountry', 'uses' => 'TeamsController@checkCountry']);
+Route::get('admin/manageMatch', ['as' => 'manageMatch', 'uses' => 'MatchesController@manageMatch']);
+Route::post('admin/deleteMatch/{id?}', ['as' => 'deleteMatch', 'uses' => 'MatchesController@deleteMatch']);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('matches/{id}', ['as' => 'matches', 'uses' => 'MatchesController@show']);
 Route::get('matches', ['as' => 'matches', 'uses' => 'MatchesController@displayAllMatches']);

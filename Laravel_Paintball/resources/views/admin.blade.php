@@ -84,6 +84,7 @@
     <div class="form-group">
         {!! Form::label('country_origin', 'Country origin') !!}
         {!! Form::text('country_origin', "Country origin", ['class' => 'form-control']) !!}
+
     </div>
     <div class="form-group">
         {!! Form::label('coach', 'Coach name') !!}
@@ -104,10 +105,6 @@
     </div>
     <button class="btn btn-primary">Send</button>
     {!! Form::close() !!}
-    <script>$("#form2").hide();
-        $('#addTeam').on('click', function() {
-            $('#form2').toggle();
-        });</script>
 
     <script>$("#formAddMatch").hide();
         $('#addMatch').on('click', function() {

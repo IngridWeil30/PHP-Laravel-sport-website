@@ -16,20 +16,48 @@ class matchesController extends Controller
     }
 
     public function findMatch(Request $request) {
-
-        $match = Matches::get()->where('team1', $request['team1'])->where('team2', $request['team2']);
-        if (isset($match[0]['team1'])) {
-            var_dump($match);
+        $teams = Teams::pluck('name', 'id');
+        $match = Matches::with('teams')->get()->where('team1', $request['team1'])->where('team2', $request['team2'])->first();
+        if (isset($match['team1'])) {
+            return view('manageMatch')->with('match', $match)->with('teams', $teams);
         } else {
             $match = Matches::get()->where('team2', $request['team1'])->where('team1', $request['team2']);
-            if (isset($match[0]['team1'])) {
-                var_dump($match);
+            if (isset($match['team1'])) {
+                return view('manageMatch')->with('match', $match)->with('teams', $teams);
             } else {
                 $message = "Match doesn't exist<br>";
-                $teams = Teams::pluck('name', 'id');
                 return view('admin')->with('teams', $teams)->with('message', $message);
             }
         }
+    }
+
+    public function deleteMatch($id) {
+        $match = Matches::find($id);
+        $teams = Teams::pluck('name', 'id');
+        $match->delete();
+        $message = "Match deleted";
+        return view('admin')->with('teams', $teams)->with('message', $message);
+    }
+
+    public function editMatch(Request $request, $data) {
+        $teams = Teams::pluck('name', 'id');
+        $match = Matches::find($data);
+        $match->update([
+            'winner' => $request['winner'],
+            'scoreTeam1' => $request['scoreTeam1'],
+            'scoreTeam2' => $request['scoreTeam2'],
+            'city' => $request['city'],
+            'description' => $request['description'],
+            'matchStatus' => $request['matchStatus'],
+            'team1' => $request['team1'],
+            'team2' => $request['team2']
+        ]);
+        $message = "Match updated";
+        return view('admin')->with('teams', $teams)->with('message', $message);
+    }
+
+    public function manageMatch() {
+        return view('manageMatch');
     }
 
 
