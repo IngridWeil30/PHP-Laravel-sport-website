@@ -11,7 +11,6 @@ class AdminController extends Controller
 
     public function viewAdmin() {
         $teams = Teams::pluck('name', 'id');
-
         return view('admin')->with('teams', $teams);
     }
 

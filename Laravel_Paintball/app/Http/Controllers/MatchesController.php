@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Matches;
+use App\Teams;
 use Illuminate\Http\Request;
 
 class matchesController extends Controller
@@ -13,6 +14,25 @@ class matchesController extends Controller
         return redirect('admin');
 
     }
+
+    public function findMatch(Request $request) {
+
+        $match = Matches::get()->where('team1', $request['team1'])->where('team2', $request['team2']);
+        if (isset($match[0]['team1'])) {
+            var_dump($match);
+        } else {
+            $match = Matches::get()->where('team2', $request['team1'])->where('team1', $request['team2']);
+            if (isset($match[0]['team1'])) {
+                var_dump($match);
+            } else {
+                $message = "Match doesn't exist<br>";
+                $teams = Teams::pluck('name', 'id');
+                return view('admin')->with('teams', $teams)->with('message', $message);
+            }
+        }
+    }
+
+
     public function create()
     {
         //
