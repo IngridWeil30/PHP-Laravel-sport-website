@@ -4,14 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Matches;
 use App\Teams;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
 
-    public function viewAdmin() {
-        $teams = Teams::pluck('name', 'id');
-        return view('admin')->with('teams', $teams);
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function viewAdmin(Guard $auth) {
+        if ($auth->user()->is_admin == "admin") {
+            $teams = Teams::pluck('name', 'id');
+            return view('admin')->with('teams', $teams);
+        } else {
+            Session::flash('fail', "You don't have the rights to access this page");
+            return redirect("/home");
+        }
+
     }
 
 

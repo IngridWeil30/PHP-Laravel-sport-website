@@ -1,5 +1,6 @@
 @extends('default')
 @section('content')
+    @include('flash')
     <html lang='fr'>
     <head>
         <title>Space Paintball - Home</title>

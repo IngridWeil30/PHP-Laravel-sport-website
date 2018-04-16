@@ -13,18 +13,24 @@
 
 Route::get('/', function () {
     App::setlocale('fr');
-    return view('welcome');
+    return view('home');
 });
+
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('match', ['as' => 'admin', 'uses' => 'AdminController@viewAdmin']);
+    Route::post('addMatch', ['as' => 'addMatch', 'uses' => 'MatchesController@addMatch']);
+    Route::post('editMatch/{data?}', ['as' => 'editMatch', 'uses' => 'MatchesController@editMatch']);
+    Route::post('addTeam', ['as' => 'addTeam', 'uses' => 'TeamsController@addTeam']);
+    Route::post('findMatch', ['as' => 'findMatch', 'uses' => 'MatchesController@findMatch']);
+    Route::get('manageMatch', ['as' => 'manageMatch', 'uses' => 'MatchesController@manageMatch']);
+    Route::post('deleteMatch/{id?}', ['as' => 'deleteMatch', 'uses' => 'MatchesController@deleteMatch']);
+});
+
+Route::get('logout', 'Auth\LoginController@logout');
 
 
 //Route::get('matches', ['as' => 'matches', 'uses' => 'MatchesController@viewMatches']);
-Route::get('admin', ['as' => 'admin', 'uses' => 'AdminController@viewAdmin']);
-Route::post('admin/addMatch', ['as' => 'addMatch', 'uses' => 'MatchesController@addMatch']);
-Route::post('admin/editMatch/{data?}', ['as' => 'editMatch', 'uses' => 'MatchesController@editMatch']);
-Route::post('admin/addTeam', ['as' => 'addTeam', 'uses' => 'TeamsController@addTeam']);
-Route::post('admin/findMatch', ['as' => 'findMatch', 'uses' => 'MatchesController@findMatch']);
-Route::get('admin/manageMatch', ['as' => 'manageMatch', 'uses' => 'MatchesController@manageMatch']);
-Route::post('admin/deleteMatch/{id?}', ['as' => 'deleteMatch', 'uses' => 'MatchesController@deleteMatch']);
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('matches/{id}', ['as' => 'matches', 'uses' => 'MatchesController@show']);
 Route::get('matches', ['as' => 'matches', 'uses' => 'MatchesController@displayAllMatches']);
@@ -32,3 +38,6 @@ Route::get('matches', ['as' => 'matches', 'uses' => 'MatchesController@displayAl
 
 /* PERMET D'AFFICHER EN FONCTION DE LA LANGUE CHOISIR EN URL (EN ou FR)*/
 Route::get('home/{lang?}','HomeController@index');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
