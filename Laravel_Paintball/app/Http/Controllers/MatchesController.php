@@ -89,7 +89,7 @@ class matchesController extends Controller
         return view('matches')->with('matches', $matches);
     }
 
-    public function show($id)
+    public function displayMatch($id)
     {
         $matches = Matches::find($id);
         //$matches = Matches::get()->where('id', $id)->first();

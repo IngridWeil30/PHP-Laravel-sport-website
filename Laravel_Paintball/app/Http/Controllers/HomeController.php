@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Matches;
+use App\Teams;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -48,6 +50,28 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+/*    public function displayMatchHome($id=1)
+    {
+        $matches = Matches::find($id);
+        //$matches = Matches::get()->where('id', $id)->first();
+        return view('home')->with('matches', $matches);
+    }*/
+
+    public function displayTeam1($id=1)
+    {
+        $teams = Teams::find($id);
+        //$matches = Matches::get()->where('id', $id)->first();
+        return view('home')->with('teams', $teams);
+    }
+
+    public function displayTeam2($id=2)
+    {
+        $teams = Teams::find($id);
+        //$matches = Matches::get()->where('id', $id)->first();
+        return view('home')->with('teams', $teams);
+    }
+
     public function show($id)
     {
         //

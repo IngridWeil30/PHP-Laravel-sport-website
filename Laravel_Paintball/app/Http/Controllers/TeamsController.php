@@ -47,9 +47,17 @@ class TeamsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+    public function displayAllTeams() {
+        $teams = Teams::get();
+        return view('teams')->with('teams', $teams);
+    }
+
+    public function displayTeam($id)
     {
-        //
+        $teams = Teams::find($id);
+        //$matches = Matches::get()->where('id', $id)->first();
+        return view('teams')->with('teams', $teams);
     }
 
     /**
