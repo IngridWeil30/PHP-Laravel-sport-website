@@ -7,6 +7,40 @@
         </div>
     @endif
 
+
+    <button type="button" id="addPlayer" class="btn btn-primary">Add player</button><br>
+
+    {!! Form::open(['url' => 'admin/addPlayer', 'id' =>'formAddPlayer']) !!}
+    <br><h2>Add a player</h2>
+    <div class="form-group">
+        {!! Form::label('name', 'Player name') !!}
+        {!! Form::text('name', "Player name" ,  ['class' => 'form-control', 'required' => 'required']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('nickname', 'Nickname') !!}
+        {!! Form::text('nickname', "Nickname" ,  ['class' => 'form-control', 'required' => 'required']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('age', 'Age') !!}
+        {!! Form::number('age', 0, ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('team_id', 'Team ID') !!}
+        {!! Form::number('team_id', 0, ['class' => 'form-control', 'required' => 'required']) !!}
+    </div>
+
+    <button class="btn btn-primary">Send</button>
+    {!! Form::close() !!}
+
+    <br>
+
+
+
+
+
+
+
+
     <button type="button" id="addMatch" class="btn btn-primary">Add match</button><br>
 
     {!! Form::open(['url' => 'admin/addMatch', 'id' =>'formAddMatch']) !!}
@@ -117,6 +151,10 @@
         $("#formAddTeam").hide();
         $('#addTeam').on('click', function() {
             $('#formAddTeam').toggle();
+        });
+        $("#formAddPlayer").hide();
+        $('#addPlayer').on('click', function() {
+            $('#formAddPlayer').toggle();
         });</script>
 
 @endsection

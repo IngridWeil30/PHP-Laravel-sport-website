@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Matches;
-use App\Teams;
+use App\Players;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class PlayersController extends Controller
 {
+    public function addPlayer(Request $request) {
+
+        Players::create($request->all());
+        return redirect('admin');
+
+    }
     /**
-     * Create a new controller instance.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function index(Request $request)
+    public function index()
     {
-/* PERMET D'AFFICHER EN FONCTION DE LA LANGUE CHOISIR EN URL (EN ou FR)*/
-          if($request->lang <> ''){
-            app()->setLocale($request->lang);
-        }
-        return view('home');
+        //
     }
 
     /**
@@ -50,22 +50,6 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-/*    public function displayMatchHome($id=1)
-    {
-        $matches = Matches::find($id);
-        //$matches = Matches::get()->where('id', $id)->first();
-        return view('home')->with('matches', $matches);
-    }*/
-
-    public function displayTeam1($id=1, $id2=2)
-    {
-        $team1 = Teams::find($id);
-        $team2 = Teams::find($id2);
-        return view('home')->with('team1', $team1)->with('team2', $team2);
-    }
-
-
     public function show($id)
     {
         //
@@ -88,16 +72,20 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     * @return void
      */
-    /*public function __construct()
+    public function update(Request $request, $id)
     {
-        $this->middleware('auth');
-    }*/
+        //
+    }
 
     /**
-     * Show the application dashboard.
+     * Remove the specified resource from storage.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function destroy($id)
+    {
+        //
+    }
 }
