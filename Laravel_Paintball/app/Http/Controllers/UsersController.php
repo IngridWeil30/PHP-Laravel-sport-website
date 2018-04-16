@@ -61,7 +61,7 @@ class UsersController extends Controller
         $user = User::find($auth->user()->id);
         $wallet = $auth->user()->wallet;
         $addToWallet = Input::get('addToWallet');
-        if ($addToWallet != 0) {
+        if ($addToWallet > 0) {
             $added_money = $wallet + $addToWallet;
             $wallet = $added_money;
             $user->wallet = $wallet;

@@ -22,6 +22,8 @@ class CreateTeamsTable extends Migration
             $table->integer('nb_victories');
             $table->integer('total_points');
             $table->string('weapon');
+            $table->string('country_flag');
+            $table->integer('ranking');
             $table->timestamps();
         });
     }

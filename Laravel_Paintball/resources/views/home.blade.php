@@ -74,7 +74,6 @@
         </div>
         <table class="table table-responsive table-dark">
             <tr>
-                <td>Team ID</td>
                 <td>Team name</td>
                 <td>Number of players</td>
                 <td>Country origin</td>
@@ -86,7 +85,6 @@
 
             @if(isset($team2->id))
                 <tr>
-                    <td>{{$team2->id}}</td>
                     <td>{{$team2->name}}</td>
                     <td>{{$team2->nb_players}}</td>
                     <td>{{$team2->country_origin}}</td>
