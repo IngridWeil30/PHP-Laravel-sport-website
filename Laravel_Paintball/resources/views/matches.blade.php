@@ -44,7 +44,9 @@
                 @else
                     <td> To come </td>
                 @endif
+                @if($match->matchStatus == 0)
                 <td><a href="/admin/newBet/{{ $match->id }}"><button  id = "newBet" class="btn btn-primary">Bet</button></a></td>
+                @endif
             </tr>
                 @endforeach
             @endif

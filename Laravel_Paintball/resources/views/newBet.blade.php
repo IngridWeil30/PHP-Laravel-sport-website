@@ -8,18 +8,21 @@
             <td>Team 2</td>
             <td>City</td>
             <td>Description</td>
-            <td>Status</td>
+            <td>Cash Prize</td>
+            <td>Odds {{ $teams[$match->team1] }}</td>
+            <td>Odds {{ $teams[$match->team2] }}</td>
+
+
+
         </tr>
         <tr>
-        <td>{{ $teams[$match->team1] }}</td>
-        <td>{{ $teams[$match->team2] }}</td>
-        <td>{{$match->city}}</td>
-        <td>{{$match->description}}</td>
-        @if($match['matchStatus'] == 1)
-            <td> Already played </td>
-        @else
-            <td> To come </td>
-        @endif
+            <td>{{ $teams[$match->team1] }}</td>
+            <td>{{ $teams[$match->team2] }}</td>
+            <td>{{$match->city}}</td>
+            <td>{{$match->description}}</td>
+            <td>${{$match->cashPrize}}</td>
+            <td>{{$match->oddsTeam1}} to 1</td>
+            <td>{{$match->oddsTeam2}} to 1</td>
     </table>
 
 
@@ -28,7 +31,7 @@
     <div class="form-group">
         {!! Form::label('winner_id', 'Choose you team :  ') !!}
         {!! Form::label('winner_id', $teams[$match['team1']]) !!}
-        {!! Form::radio('winner_id', $match['team1']) !!}
+        {!! Form::radio('winner_id', $match['team1'], true) !!}
         {!! Form::label('winner_id', $teams[$match['team2']]) !!}
         {!! Form::radio('winner_id', $match['team2']) !!}
     </div>
