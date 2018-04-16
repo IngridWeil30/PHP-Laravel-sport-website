@@ -21,7 +21,7 @@
     <div class="alert alert-success">
         {{ Session::get('bet_success') }}
     </div>
-    @endif
+@endif
 
 @if(Session::has('addToWallet'))
     <div class="alert alert-success">

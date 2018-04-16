@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <a href="/admin"><button type="button" class="btn btn-primary"><-Back</button></a><br>
+    <a href="/admin/match"><button type="button" class="btn btn-primary"><-Back</button></a><br>
     <br><table class="table table-responsive table-dark">
             <tr>
                 <td>Match ID</td>
