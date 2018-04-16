@@ -49,14 +49,20 @@ class TeamsController extends Controller
      */
 
     public function displayAllTeams() {
-        $teams = Teams::get();
-        return view('teams')->with('teams', $teams);
+        $teams = Teams::orderBy('total_points', 'desc')
+            ->get();
+        $ranking = 1;
+     /*   $size = sizeof($teams);
+
+        for ($i=1; $i < $size; $i++) {
+
+        }*/
+       return view('teams')->with('teams', $teams)->with('ranking', $ranking);
     }
 
     public function displayTeam($id)
     {
         $teams = Teams::find($id);
-        //$matches = Matches::get()->where('id', $id)->first();
         return view('teams')->with('teams', $teams);
     }
 

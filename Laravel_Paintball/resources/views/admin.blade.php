@@ -35,12 +35,6 @@
     <br>
 
 
-
-
-
-
-
-
     <button type="button" id="addMatch" class="btn btn-primary">Add match</button><br>
 
     {!! Form::open(['url' => 'admin/addMatch', 'id' =>'formAddMatch']) !!}
@@ -135,7 +129,14 @@
     <div class="form-group">
         {!! Form::label('weapon', 'Name of the team super-weapon') !!}
         {!! Form::text('weapon', "Weapon name" ,  ['class' => 'form-control']) !!}
-
+    </div>
+    <div class="form-group">
+        {!! Form::label('country_flag', 'Country flag') !!}
+        {!! Form::text('country_flag', "Country flag" ,  ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('ranking', 'Ranking') !!}
+        {!! Form::number('ranking', 0, ['class' => 'form-control']) !!}
     </div>
     <button class="btn btn-primary">Send</button>
     {!! Form::close() !!}
