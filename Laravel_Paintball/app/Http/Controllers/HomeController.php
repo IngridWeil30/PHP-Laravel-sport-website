@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Create a new controller instance.
      *
      * @return \Illuminate\Http\Response
      */
@@ -94,20 +94,16 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function update(Request $request, $id)
+    /*public function __construct()
     {
-        //
-    }
+        $this->middleware('auth');
+    }*/
 
     /**
-     * Remove the specified resource from storage.
+     * Show the application dashboard.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
 }
