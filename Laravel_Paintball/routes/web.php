@@ -20,6 +20,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('match', ['as' => 'admin', 'uses' => 'AdminController@viewAdmin']);
     Route::post('addMatch', ['as' => 'addMatch', 'uses' => 'MatchesController@addMatch']);
     Route::post('editMatch/{data?}', ['as' => 'editMatch', 'uses' => 'MatchesController@editMatch']);
+    Route::post('addPlayer', ['as' => 'addPlayer', 'uses' => 'PlayersController@addPlayer']);
     Route::post('addTeam', ['as' => 'addTeam', 'uses' => 'TeamsController@addTeam']);
     Route::post('findMatch', ['as' => 'findMatch', 'uses' => 'MatchesController@findMatch']);
     Route::get('manageMatch', ['as' => 'manageMatch', 'uses' => 'MatchesController@manageMatch']);
@@ -37,10 +38,12 @@ Route::get('logout', 'Auth\LoginController@logout');
 Route::get('/', 'HomeController@displayMatchHome');
 Route::get('home', 'HomeController@displayMatchHome');
 Route::get('home', 'HomeController@displayTeam1');
-Route::get('home', 'HomeController@displayTeam2');
 
 Route::get('matches/{id}', ['as' => 'matches', 'uses' => 'MatchesController@displayMatch']);
 Route::get('matches', ['as' => 'matches', 'uses' => 'MatchesController@displayAllMatches']);
 
 Route::get('teams', ['as' => 'teams', 'uses' => 'TeamsController@displayAllTeams']);
 Route::get('teams/{id}', ['as' => 'teams', 'uses' => 'TeamsController@displayTeam']);
+
+Route::get('users', ['as' => 'user', 'uses' => 'UsersController@getUserWallet']);
+Route::post('users/addToWallet', ['as' => 'user', 'uses' => 'UsersController@addToWallet']);

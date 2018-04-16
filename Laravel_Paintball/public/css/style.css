@@ -53,3 +53,19 @@ padding-right: 2%;
 .versus{
 text-align: center;
 }
+
+#avatar
+{
+float: left;
+margin: 20px;
+}
+
+#table-wallet {
+    width: 5%;
+    float: left;
+}
+
+#wallet.form-control
+{
+    width: 9%;
+}

@@ -16,8 +16,19 @@
     </div>
 @endif
 
+
 @if(Session::has('bet_success'))
     <div class="alert alert-success">
         {{ Session::get('bet_success') }}
+
+@if(Session::has('addToWallet'))
+    <div class="alert alert-success">
+        {{ Session::get('addToWallet') }}
+    </div>
+@endif
+
+@if(Session::has('noAddToWallet'))
+    <div class="alert alert-danger">
+        {{ Session::get('noAddToWallet') }}
     </div>
 @endif
