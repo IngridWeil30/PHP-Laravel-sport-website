@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Matches;
 use App\Teams;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class matchesController extends Controller
+
 {
     public function addMatch(Request $request) {
 
@@ -87,13 +89,15 @@ class matchesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function displayAllMatches() {
+    public function displayAllMatches(Guard $auth) {
+        $teams = Teams::pluck('name', 'id');
         $matches = Matches::get();
-        return view('matches')->with('matches', $matches);
+        return view('matches')->with('matches', $matches)->with('teams', $teams);
     }
 
     public function displayMatch($id)
     {
+
         $matches = Matches::find($id);
         //$matches = Matches::get()->where('id', $id)->first();
         return view('matches')->with('matches', $matches);

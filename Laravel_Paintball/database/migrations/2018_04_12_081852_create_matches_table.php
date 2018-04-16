@@ -23,6 +23,9 @@ class CreateMatchesTable extends Migration
             $table->string('city');
             $table->string('description');
             $table->integer('matchStatus');
+            $table->integer('cashPrize');
+            $table->float('oddsTeam1', 11, 2);
+            $table->float('oddsTeam2', 11, 2);
             $table->timestamps();
         });
     }

@@ -54,14 +54,15 @@
         </form>
         <form class="form-inline my-2 my-lg-0">
             <a class="nav-item"><a class="nav-link" href="/logout">Logout</a></a>
-        </form>
-        <!--{{--}}<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+
+            <!--{{--}}<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--}}-->
+        </form>
     </div>
-    <!--<form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>-->
+        <!--<form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>-->
 </nav>
 <main role="main" class="container">
     <div class="starter-template" style="padding-top: 60px">

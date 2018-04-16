@@ -3,7 +3,6 @@
     <h2>Matches Table</h2>
 
 
-
     <table class="table table-responsive table-dark">
         <tr>
             <td>Match ID</td>
@@ -33,14 +32,19 @@
                 @foreach($matches as $match)
             <tr>
                     <td>{{$match->id}}</td>
-                    <td>{{$match->team1}}</td>
-                    <td>{{$match->team2}}</td>
-                    <td>{{$match->winner}}</td>
+                    <td>{{ $teams[$match->team1] }}</td>
+                    <td>{{ $teams[$match->team2] }}</td>
+                    <td>{{ $teams[$match->winner] }}</td>
                     <td>{{$match->scoreTeam1}}</td>
                     <td>{{$match->scoreTeam2}}</td>
                     <td>{{$match->city}}</td>
                     <td>{{$match->description}}</td>
-                    <td>{{$match->matchStatus}}</td>
+                @if($match['matchStatus'] == 1)
+                    <td> Already played </td>
+                @else
+                    <td> To come </td>
+                @endif
+                <td><a href="/admin/newBet/{{ $match->id }}"><button  id = "newBet" class="btn btn-primary">Bet</button></a></td>
             </tr>
                 @endforeach
             @endif
