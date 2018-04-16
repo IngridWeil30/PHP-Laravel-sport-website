@@ -54,16 +54,16 @@
                 <td>Weapon</td>
             </tr>
 
-            @if(isset($teams->id))
+            @if(isset($team1->id))
                 <tr>
-                    <td>{{$teams->id}}</td>
-                    <td>{{$teams->name}}</td>
-                    <td>{{$teams->nb_players}}</td>
-                    <td>{{$teams->country_origin}}</td>
-                    <td>{{$teams->coach}}</td>
-                    <td>{{$teams->nb_victories}}</td>
-                    <td>{{$teams->total_points}}</td>
-                    <td>{{$teams->weapon}}</td>
+                    <td>{{$team1->id}}</td>
+                    <td>{{$team1->name}}</td>
+                    <td>{{$team1->nb_players}}</td>
+                    <td>{{$team1->country_origin}}</td>
+                    <td>{{$team1->coach}}</td>
+                    <td>{{$team1->nb_victories}}</td>
+                    <td>{{$team1->total_points}}</td>
+                    <td>{{$team1->weapon}}</td>
                 </tr>
             @endif
         </table>
@@ -84,16 +84,16 @@
                 <td>Weapon</td>
             </tr>
 
-            @if(isset($teams->id))
+            @if(isset($team2->id))
                 <tr>
-                    <td>{{$teams->id}}</td>
-                    <td>{{$teams->name}}</td>
-                    <td>{{$teams->nb_players}}</td>
-                    <td>{{$teams->country_origin}}</td>
-                    <td>{{$teams->coach}}</td>
-                    <td>{{$teams->nb_victories}}</td>
-                    <td>{{$teams->total_points}}</td>
-                    <td>{{$teams->weapon}}</td>
+                    <td>{{$team2->id}}</td>
+                    <td>{{$team2->name}}</td>
+                    <td>{{$team2->nb_players}}</td>
+                    <td>{{$team2->country_origin}}</td>
+                    <td>{{$team2->coach}}</td>
+                    <td>{{$team2->nb_victories}}</td>
+                    <td>{{$team2->total_points}}</td>
+                    <td>{{$team2->weapon}}</td>
                 </tr>
             @endif
         </table>
