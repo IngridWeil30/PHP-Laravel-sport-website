@@ -24,6 +24,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('findMatch', ['as' => 'findMatch', 'uses' => 'MatchesController@findMatch']);
     Route::get('manageMatch', ['as' => 'manageMatch', 'uses' => 'MatchesController@manageMatch']);
     Route::post('deleteMatch/{id?}', ['as' => 'deleteMatch', 'uses' => 'MatchesController@deleteMatch']);
+    Route::get('newBet/{id?}', ['as' => 'newBet', 'uses' => 'BetController@newBet']);
+    Route::post('makeBet/{matchId?}/{userId?}', ['as' => 'makeBet', 'uses' => 'BetController@makeBet']);
+
 });
 
 Route::get('logout', 'Auth\LoginController@logout');
