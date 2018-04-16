@@ -57,6 +57,15 @@ class matchesController extends Controller
             'team1' => $request['team1'],
             'team2' => $request['team2']
         ]);
+        if ($request['matchStatus'] == 1) {
+            $team1 = Teams::find($request['team1']);
+            $score1 = $request['scoreTeam1'] + $team1->total_points;
+            $team1->update(['total_points' => $score1]);
+            $team2 = Teams::find($request['team2']);
+            $score2 = $request['scoreTeam2'] + $team2->total_points;
+            $team2->update(['total_points' => $score2]);
+
+        }
         $message = "Match updated";
         return view('admin')->with('teams', $teams)->with('message', $message);
     }
