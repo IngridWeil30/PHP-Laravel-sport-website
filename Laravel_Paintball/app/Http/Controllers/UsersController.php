@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
+
 class UsersController extends Controller
 {
     /**
@@ -48,6 +49,81 @@ class UsersController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+    public function findUser(Request $request) {
+        $user = User::get()->where('email', $request['email'])->first();
+        if (isset($user['email'])) {
+            return view('manageUser')->with('user', $user);
+        } else {
+            Session::flash('wrongEmail', "Email doesn't exist");
+            return redirect("/admin/match");
+        }
+    }
+
+    public function editUserAdmin (Request $request, $id) {
+        $user = User::find($id);
+        if ($request['password'] != $request['password_confirmation']) {
+            Session::flash('wrongPassword', "Password do not match password confirmation");
+            return redirect("/admin/match");
+
+        } else {
+            $user->update([
+                'email' => $request['email'],
+                'name' => $request['name'],
+                'password' => bcrypt($request['password']),
+                'is_admin' => $request['is_admin']
+            ]);
+            Session::flash('infoUpdated', "User info updated");
+            return redirect("/admin/match");
+        }
+    }
+
+    public function deleteUser($id) {
+        $user = User::find($id);
+        $user->delete();
+        Session::flash('userDeleted', "User deleted");
+        return redirect("/admin/match");
+    }
+
+    public function addUser(Request $request) {
+        if ($request['password'] != $request['password_confirmation']) {
+            Session::flash('wrongPassword', "Password do not match password confirmation");
+            return redirect("/admin/match");
+
+        } else {
+            User::create([
+                'email' => $request['email'],
+                'name' => $request['name'],
+                'password' => bcrypt($request['password']),
+                'is_admin' => $request['is_admin']
+            ]);
+            Session::flash('userCreated', "User created");
+            return redirect("/admin/match");
+        }
+
+    }
+
+    public function myInfo (Guard $auth) {
+        $user = $auth->user();
+        return view('myInfo')->with('user', $user);
+
+    }
+
+    public function editUser (Guard $auth, Request $request) {
+        $user = User::find($auth->user()->id);
+        if ($request['password'] != $request['password_confirmation']) {
+            Session::flash('wrongPassword', "Password do not match password confirmation");
+            return $this->myInfo($auth);
+
+        } else {
+            $user->update([
+                'email' => $request['email'],
+                'name' => $request['name'],
+                'password' => bcrypt($request['password'])
+            ]);
+            Session::flash('infoUpdated', "Your profile is updated");
+            return $this->myInfo($auth);
+        }
+    }
 
     public function getUserWallet(Guard $auth)
     {

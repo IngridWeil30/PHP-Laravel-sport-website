@@ -34,3 +34,33 @@
         {{ Session::get('noAddToWallet') }}
     </div>
 @endif
+
+@if(Session::has('wrongPassword'))
+    <div class="alert alert-danger">
+        {{ Session::get('wrongPassword') }}
+    </div>
+@endif
+
+@if(Session::has('infoUpdated'))
+    <div class="alert alert-success">
+        {{ Session::get('infoUpdated') }}
+    </div>
+@endif
+
+@if(Session::has('userCreated'))
+    <div class="alert alert-success">
+        {{ Session::get('userCreated') }}
+    </div>
+@endif
+
+@if(Session::has('wrongEmail'))
+    <div class="alert alert-danger">
+        {{ Session::get('wrongEmail') }}
+    </div>
+@endif
+
+@if(Session::has('userDeleted'))
+    <div class="alert alert-danger">
+        {{ Session::get('userDeleted') }}
+    </div>
+@endif

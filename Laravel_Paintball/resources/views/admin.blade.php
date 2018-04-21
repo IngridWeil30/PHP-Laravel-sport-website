@@ -1,5 +1,6 @@
 @extends('default')
 @section('content')
+    @include('flash')
 
     @if(isset($message))
         <div class="alert alert-warning">
@@ -29,7 +30,7 @@
         {!! Form::number('team_id', 0, ['class' => 'form-control', 'required' => 'required']) !!}
     </div>
 
-    <button class="btn btn-primary">Send</button>
+    <button class="btn btn-success">Send</button>
     {!! Form::close() !!}
 
     <br>
@@ -73,7 +74,37 @@
         {!! Form::select('winner', $teams) !!}
     </div>
 
-        <button class="btn btn-primary">Send</button>
+        <button class="btn btn-success">Send</button>
+    {!! Form::close() !!}
+
+    <br>
+
+    <button type="button" id="addUser" class="btn btn-primary">Add User</button><br>
+
+    {!! Form::open(['url' => route('addUser'), 'id' =>'formAddUser']) !!}
+    <br><h2>Add a new user</h2>
+    <div class="form-group">
+        {!! Form::label('name', 'Name') !!}
+        {!! Form::text('name', 'name',  ['class' => 'form-control', 'required' => 'required']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('email', 'Email') !!}
+        {!! Form::text('email', 'email',  ['class' => 'form-control', 'required' => 'required']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('password', 'Password') !!}
+        {!! Form::password('password', ['class' => 'form-control', 'required' => 'required']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('password_confirmation', 'Password Confirmation') !!}
+        {!! Form::password('password_confirmation', ['class' => 'form-control', 'required' => 'required']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('is_admin', 'Level of authorization') !!}
+        {!! Form::text('is_admin', "user or admin",  ['class' => 'form-control', 'required' => 'required']) !!}
+    </div>
+
+    <button class="btn btn-success">Send</button>
     {!! Form::close() !!}
 
     <br>
@@ -90,7 +121,21 @@
         {!! Form::label('team2', 'Team 2') !!}
         {!! Form::select('team2', $teams) !!}
     </div>
-    <button class="btn btn-primary">Find</button>
+    <button class="btn btn-success">Find</button>
+
+    {!! Form::close() !!}
+
+    <br>
+
+    <br><button type="button" id="findUser" class="btn btn-primary">Find user and manage</button>
+
+    {!! Form::open(['url' => route('findUser'), 'id' =>'formFindUser']) !!}
+    <br><h2>Find a User</h2>
+    <div class="form-group">
+        {!! Form::label('email', 'User email') !!}
+        {!! Form::text('email', "email",  ['class' => 'form-control', 'required' => 'required']) !!}
+    </div>
+    <button class="btn btn-success">Find</button>
 
     {!! Form::close() !!}
 
@@ -138,7 +183,7 @@
         {!! Form::label('ranking', 'Ranking') !!}
         {!! Form::number('ranking', 0, ['class' => 'form-control']) !!}
     </div>
-    <button class="btn btn-primary">Send</button>
+    <button class="btn btn-success">Send</button>
     {!! Form::close() !!}
 
     <script>$("#formAddMatch").hide();
@@ -156,6 +201,15 @@
         $("#formAddPlayer").hide();
         $('#addPlayer').on('click', function() {
             $('#formAddPlayer').toggle();
-        });</script>
+        });
+        $("#formAddUser").hide();
+        $('#addUser').on('click', function() {
+            $('#formAddUser').toggle();
+        });
+        $("#formFindUser").hide();
+        $('#findUser').on('click', function() {
+            $('#formFindUser').toggle();
+        })
+    </script>
 
 @endsection
