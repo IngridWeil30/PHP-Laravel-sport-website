@@ -28,7 +28,12 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('newBet/{id?}', ['as' => 'newBet', 'uses' => 'BetController@newBet']);
     Route::post('makeBet/{matchId?}/{userId?}', ['as' => 'makeBet', 'uses' => 'BetController@makeBet']);
     Route::get('displayBets', ['as' => 'displayBet', 'uses' => 'BetController@displayBets']);
+    Route::get('myInfo', ['as' => 'editUser', 'uses' => 'UsersController@myInfo']);
     Route::post('editUser', ['as' => 'editUser', 'uses' => 'UsersController@editUser']);
+    Route::post('editUserAdmin/{id?}', ['as' => 'editUserAdmin', 'uses' => 'UsersController@editUserAdmin']);
+    Route::post('findUser', ['as' => 'findUser', 'uses' => 'UsersController@findUser']);
+    Route::post('deleteUser/{id?}', ['as' => 'deleteUser', 'uses' => 'UsersController@deleteUser']);
+    Route::post('addUser', ['as' => 'addUser', 'uses' => 'UsersController@addUser']);
 
 });
 
@@ -40,6 +45,8 @@ Route::get('logout', 'Auth\LoginController@logout');
 Route::get('/', 'HomeController@displayMatchHome');
 Route::get('home', 'HomeController@displayMatchHome');
 Route::get('home', 'HomeController@displayTeam1');
+Route::get('/', 'HomeController@displayTeam1');
+
 
 Route::get('matches/{id}', ['as' => 'matches', 'uses' => 'MatchesController@displayMatch']);
 Route::get('matches', ['as' => 'matches', 'uses' => 'MatchesController@displayAllMatches']);

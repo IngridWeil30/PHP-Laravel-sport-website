@@ -17,7 +17,7 @@
 </head>
 <body style="padding-top: 60px">
 <nav class="navbar navbar-expand-md navbar-dark bg-light fixed-top">
-    <a id="logo" href="home"><img src="https://image.ibb.co/cOPvxS/Spacepaintball1.png" href="/home"
+    <a id="logo" href="/home"><img src="https://image.ibb.co/cOPvxS/Spacepaintball1.png" href="/home"
                                   alt="logo Paintball"></a>
     <!--<a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +60,7 @@
         @endif
         @if( isset(Auth::user()->name))
             <form class="form-inline my-2 my-lg-0">
-                <a class="nav-item"><a class="nav-link" href="/admin/editUser">Hello {{ Auth::user()->name }}</a></a>
+                <a class="nav-item"><a class="nav-link" href="/admin/myInfo">Hello {{ Auth::user()->name }}</a></a>
             </form>
             <form class="form-inline my-2 my-lg-0">
                 <a class="nav-item"><a class="nav-link" href="/users">My Wallet</a></a>
