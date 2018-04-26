@@ -1,5 +1,6 @@
 @extends('default')
 @section('content')
+    <div id="container">
     <h2>Teams Table</h2>
 
 
@@ -32,6 +33,7 @@
         @else
 
         @foreach($teams as $team)
+
                 <tr>
                     <td>{{$ranking}}</td>
                     <td>{{$team->name}}</td>
@@ -41,12 +43,13 @@
                     <td>{{$team->nb_victories}}</td>
                     <td>{{$team->total_points}}</td>
                     <td>{{$team->weapon}}</td>
-                    <td><img src="{{$team->country_flag}}" height="60"></td>
+                    <td><img src="{{$team->country_flag}}" height="80"></td>
                 </tr>
-                {!! $ranking++ !!}
+                {{$ranking++}}
 
             @endforeach
         @endif
 
     </table>
+    </div>
 @endsection

@@ -1,7 +1,10 @@
 body
 {
-background-image: url('https://wallpaperscraft.com/image/earth_moon_space_galaxy_118437_1920x1200.jpg');
+background-image: url('https://clubdelavenir.files.wordpress.com/2016/07/image-tache-peinture.png?w=825'), url("https://wallpaperscraft.com/image/earth_moon_space_galaxy_118437_1920x1200.jpg");
+  background-position: right bottom, left top;
+  background-repeat: repeat;
 }
+
 
 #logo
 {
@@ -24,7 +27,7 @@ color: #470e70 !important;
 
 h1, h2
 {
-font-family: 'Cute Font', cursive !important;
+  font-family: 'Cute Font', cursive !important;
 font-size: 4em !important;
 color: white !important;
 }
@@ -36,6 +39,14 @@ font-size: 2em !important;
 color: black !important;
 }
 
+.quote
+{
+font-family: 'Cute Font', cursive !important;
+font-size: 2em !important;
+color: black !important;
+padding: 10px;
+}
+
 label
 {
 font-family: 'Cute Font', cursive !important;
@@ -45,9 +56,8 @@ color: white !important;
 
 #container
 {
-background-color: rgba(151, 138, 242, 0.3);
-padding-left: 2%;
-padding-right: 2%;
+background-color: rgba(151, 138, 242, 0.8);
+padding: 2%;
 }
 
 .versus{
@@ -68,4 +78,16 @@ margin: 20px;
 #wallet.form-control
 {
     width: 9%;
+}
+
+footer
+{
+background-color : black;
+color: white !important;
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+text-align: center;
+font-size: 1em;
 }

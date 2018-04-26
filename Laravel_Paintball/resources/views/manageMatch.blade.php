@@ -1,6 +1,4 @@
 @extends('default')
-
-
 @section('content')
     <a href="/admin/match"><button type="button" class="btn btn-primary"><-Back</button></a><br>
     <br><table class="table table-responsive table-dark">

@@ -4,13 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Players;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PlayersController extends Controller
 {
     public function addPlayer(Request $request) {
 
-        Players::create($request->all());
-        return redirect('admin');
+        Players::create([
+            'name' => $request['name'],
+            'nickname' => $request['nickname'],
+            'age' => ($request['age']),
+            'team_id' => ($request['team_id'])
+        ]);
+        Session::flash('playerCreated', "Player created");
+        return redirect("/admin/match");
 
     }
     /**

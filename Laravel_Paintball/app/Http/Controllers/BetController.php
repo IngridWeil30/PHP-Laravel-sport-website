@@ -61,7 +61,7 @@ class BetController extends Controller
         if ($winner_id == $match->team1) {
             $match->update(['oddsTeam1' => $oddsTeam]);
             $odds2 = Bets::get()->where('match_id', $matchId)->where('winner_id', $match->team2);
-            $tot2 = 0;
+            $tot2 = 1;
             foreach($odds2 as $totalOdds) {
                 $tot2 = $tot2 + $totalOdds->sum;
             }
@@ -84,7 +84,7 @@ class BetController extends Controller
         $matches = Matches::get();
         $bets = Bets::get()->where('user_id', 2);
         //$bets = Bets::get()->where('user_id', $auth->user()->id);
-        var_dump($bets->match_id);
+        var_dump($bets);
         //var_dump($matches[$bets->match_id[0]]);
         //return view('mybets')->with('matches', $matches)->with('teams', $teams)->with('bets', $bets);
     }

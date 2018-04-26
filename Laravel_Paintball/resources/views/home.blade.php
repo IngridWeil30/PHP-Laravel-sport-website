@@ -44,7 +44,6 @@
 
         <table class="table table-responsive table-dark">
             <tr>
-                <td>Team ID</td>
                 <td>Team name</td>
                 <td>Number of players</td>
                 <td>Country origin</td>
@@ -56,7 +55,6 @@
 
             @if(isset($team1->id))
                 <tr>
-                    <td>{{$team1->id}}</td>
                     <td>{{$team1->name}}</td>
                     <td>{{$team1->nb_players}}</td>
                     <td>{{$team1->country_origin}}</td>
@@ -95,9 +93,8 @@
                 </tr>
             @endif
         </table>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet mauris metus, ut porttitor tortor faucibus ut. Duis id tortor eu quam rutrum pharetra in non ligula. Proin ornare lectus non dolor faucibus luctus. Nullam nec lacinia quam. Proin blandit vehicula ante quis mattis. Aliquam ut efficitur ante. Quisque ligula erat, sodales in euismod eget, consectetur id purus. Quisque euismod eu arcu sed semper. Vestibulum tempor ipsum eu sem placerat ornare. Pellentesque volutpat est mi, eget vulputate eros porta et. Donec sed hendrerit mi. Sed feugiat molestie elit, non tristique quam porta a.
-
-            Suspendisse potenti. Pellentesque eget lorem id nulla placerat placerat suscipit et nisl. Maecenas faucibus pulvinar est. Aliquam consequat ut dolor nec condimentum. In at dapibus lacus. Quisque molestie mattis ante eget tincidunt. Curabitur vitae condimentum tellus. Morbi convallis eget risus quis lobortis.</p>
+        <p class="quote"><b>Daily quote : </b><br>
+            <i>“As an Terrian competing at the Paintball Station, I truly believe athletes have a crucial role to play to inspire the next generation, especially those who share a passion for paintball, as this sport can unite the world, breaking down barriers and having a positive impact on society,”<br> - Bruce Waterpaint, Team leader of the American team.</i></p>
     </div>
     </body>
     </html>

@@ -16,8 +16,8 @@ class matchesController extends Controller
     public function addMatch(Request $request) {
 
         Matches::create($request->all());
-        return redirect('admin');
-
+        Session::flash('matchCreated', "Match created");
+        return redirect("/admin/match");
     }
 
     public function findMatch(Request $request) {
@@ -74,30 +74,6 @@ class matchesController extends Controller
         return view('manageMatch');
     }
 
-
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
     public function displayAllMatches(Guard $auth) {
         $teams = Teams::pluck('name', 'id');
         $matches = Matches::get();
@@ -110,39 +86,5 @@ class matchesController extends Controller
         $matches = Matches::find($id);
         //$matches = Matches::get()->where('id', $id)->first();
         return view('matches')->with('matches', $matches);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

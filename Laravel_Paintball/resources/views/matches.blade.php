@@ -1,5 +1,6 @@
 @extends('default')
 @section('content')
+    <div id="container">
     <h2>Matches Table</h2>
 
 
@@ -52,4 +53,5 @@
             @endif
 
     </table>
+    </div>
 @endsection
