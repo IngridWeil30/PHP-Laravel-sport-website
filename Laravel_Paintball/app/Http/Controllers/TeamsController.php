@@ -24,39 +24,40 @@ class TeamsController extends Controller
         }
     }
 
-
-    public function create()
+    public function findTeam(Request $request)
     {
-        //
+        $team = Teams::get()->where('id', $request->input('name'))->first();
+        //dd($request);
+        if (isset($team['name'])) {
+            return view('manageTeam')->with('team', $team);
+        } else {
+            $message = "Team doesn't exist<br>";
+            return view('manageTeam')->with('team', $team)->with('message', $message);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function editTeam(Request $request, $data) {
+        $teams = Teams::pluck('name', 'id');
+        $team = Teams::find($data);
+        $team->update([
+            'name' => $request['name'],
+            'nb_players' => $request['nb_players'],
+            'country_origin' => $request['country_origin'],
+            'coach' => $request['coach'],
+            'nb_victories' => $request['nb_victories'],
+            'total_points' => $request['total_points'],
+            'weapon' => $request['weapon'],
+            'country_flag' => $request['country_flag'],
+            'ranking' => $request['ranking']
+        ]);
+        $message = "Team updated";
+        return view('admin')->with('teams', $teams)->with('message', $message);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
     public function displayAllTeams() {
         $teams = Teams::orderBy('total_points', 'desc')
             ->get();
         $ranking = 1;
-     /*   $size = sizeof($teams);
-
-        for ($i=1; $i < $size; $i++) {
-
-        }*/
        return view('teams')->with('teams', $teams)->with('ranking', $ranking);
     }
 
@@ -66,37 +67,16 @@ class TeamsController extends Controller
         return view('teams')->with('teams', $teams);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+
+    public function manageTeam() {
+        return view('manageTeam');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function deleteTeam($id) {
+        $team = Teams::find($id);
+        $teams = Teams::pluck('name', 'id');
+        $team->delete();
+        $message = "Team deleted";
+        return view('admin')->with('teams', $teams)->with('message', $message);
     }
 }

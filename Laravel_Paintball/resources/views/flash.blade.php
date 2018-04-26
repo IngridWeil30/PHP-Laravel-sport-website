@@ -53,6 +53,18 @@
     </div>
 @endif
 
+@if(Session::has('matchCreated'))
+    <div class="alert alert-success">
+        {{ Session::get('matchCreated') }}
+    </div>
+@endif
+
+@if(Session::has('playerCreated'))
+    <div class="alert alert-success">
+        {{ Session::get('playerCreated') }}
+    </div>
+@endif
+
 @if(Session::has('wrongEmail'))
     <div class="alert alert-danger">
         {{ Session::get('wrongEmail') }}

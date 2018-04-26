@@ -1,5 +1,6 @@
 @extends('default')
 @section('content')
+    <div id="container">
     <h2>Your Bets</h2>
 
     <table class="table table-responsive table-dark">
@@ -13,11 +14,12 @@
 
         @foreach($bets as $bet)
             <tr>
-                <td>{{ $matches[$bet->match_id]->team1 }}</td>
-                <td>{{ $teams[$matches[$bet->match_id]->team2] }}</td>
-                <td>{{ $teams[$bet->winner] }}</td>
+                {{$bet}}
+                <td>{{  }}</td>
+                <td>{{  }}</td>
+                <td>{{  }}</td>
                 <td>{{$bet->sum}}</td>
-                @if($matches[$bet->match_id]['matchStatus'] == 1)
+                @if( 0 === 0)
                     <td> Already played</td>
                 @else
                     <td> To come</td>
@@ -26,4 +28,5 @@
         @endforeach
 
     </table>
+    </div>
 @endsection

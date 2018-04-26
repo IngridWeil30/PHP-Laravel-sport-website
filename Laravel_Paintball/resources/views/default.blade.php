@@ -65,9 +65,9 @@
             <form class="form-inline my-2 my-lg-0">
                 <a class="nav-item"><a class="nav-link" href="/users">My Wallet</a></a>
             </form>
-            <form class="form-inline my-2 my-lg-0">
+            {{--<form class="form-inline my-2 my-lg-0">
                 <a class="nav-item"><a class="nav-link" href="/admin/displayBets">My Bets</a></a>
-            </form>
+            </form>--}}
             <form class="form-inline my-2 my-lg-0">
                 <a class="nav-item"><a class="nav-link" href="/logout">Logout</a></a>
 
@@ -96,4 +96,5 @@
 <script src="../../../../assets/js/vendor/popper.min.js"></script>
 <script src="../../../../dist/js/bootstrap.min.js"></script>
 </body>
+<footer>Copyright Jordane Agier & Ingrid Weil - EPITECH Paris 2018</footer>
 </html>

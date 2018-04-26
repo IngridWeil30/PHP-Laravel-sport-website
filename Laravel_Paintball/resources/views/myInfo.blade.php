@@ -2,6 +2,7 @@
 
 @section('content')
     @include('flash')
+    <div id="container">
     <h2>Edit my Info</h2>
     {!! Form::open(['url' => route('editUser'), 'id' => 'formEditUser']) !!}
     <div class="form-group">
@@ -23,4 +24,5 @@
 
     <button class="btn btn-primary">Send</button>
     {!! Form::close() !!}
+    </div>
 @endsection
